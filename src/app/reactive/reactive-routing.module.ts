@@ -6,12 +6,12 @@ import { SwitchesComponent } from './switches/switches.component';
 
 const routes: Routes = [
   {
-    path:'',
-    children:[
-      {path:'basicos', component:BasicosComponent},
-      {path:'dinamicos', component:DinamicosComponent},
-      {path:'switches', component:SwitchesComponent},
-      {path:'**', redirectTo:'basicos'}
+    path: '',
+    children: [
+      { path: 'basicos', component: BasicosComponent },
+      { path: 'dinamicos', component: DinamicosComponent },
+      { path: 'switches', component: SwitchesComponent },
+      { path: '**', redirectTo: 'basicos' }
     ]
   }
 ];
