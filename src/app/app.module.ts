@@ -4,10 +4,16 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { BasicosComponent } from './template/basicos/basicos.component';
+import { DinamicosComponent } from './template/dinamicos/dinamicos.component';
+import { SwitchesComponent } from './template/switches/switches.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BasicosComponent,
+    DinamicosComponent,
+    SwitchesComponent
   ],
   imports: [
     BrowserModule,
