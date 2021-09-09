@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,13 +9,20 @@ import { NgForm } from '@angular/forms';
 })
 export class BasicosComponent implements OnInit {
 
+  @ViewChild('miFormulario') miFormulario!:NgForm; //Para hacer referencía a una propiedad local en nuestro HTML
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  guardar(miFormulario:NgForm){
-    console.log('Submit hecho', miFormulario.value);
+  nombreValido():boolean{
+    return this.miFormulario?.controls.producto?.invalid  && this.miFormulario?.controls.producto?.touched
+    //El uso de ? significa que el valor puede ser null
+  }
+
+  guardar(){
+    console.log('Submit hecho', this.miFormulario);
 
     
   }
