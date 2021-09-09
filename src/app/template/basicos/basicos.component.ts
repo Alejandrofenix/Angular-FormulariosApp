@@ -20,10 +20,12 @@ export class BasicosComponent implements OnInit {
     return this.miFormulario?.controls.producto?.invalid  && this.miFormulario?.controls.producto?.touched
     //El uso de ? significa que el valor puede ser null
   }
+  precioValido():boolean{
+    return  this.miFormulario?.controls.precio?.touched && this.miFormulario?.controls.precio?.value<0;
+  }
 
   guardar(){
-    console.log('Submit hecho', this.miFormulario);
-
+  
     
   }
 
