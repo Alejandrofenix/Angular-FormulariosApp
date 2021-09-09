@@ -33,8 +33,8 @@
          <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Existencia: </label>
             <div class="col-sm-9 ">
-               <input type="number" class="form-control" ngModel name="existencia"
-                  placeholder="Existencias del producto" >
+               <input type="number" class="form-control" ngModel customMin [minimo]="0" name="existencia"
+                  placeholder="Existencias del producto"  required>
             </div>
          </div>
 
@@ -56,5 +56,8 @@
       <pre>{{miFormulario.valid}}</pre>
       <span>Valor</span>
       <pre>{{miFormulario.value|json}}</pre>
+      
+      <span>CustomDirective</span>
+      <pre>{{miFormulario.controls.existencias?.errors|json}}</pre>
    </div>
 </div>
