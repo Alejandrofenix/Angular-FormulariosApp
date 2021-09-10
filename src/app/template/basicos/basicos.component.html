@@ -10,7 +10,7 @@
             <label class="col-sm-3 col-form-label">Poducto: </label>
             <div class="col-sm-9 ">
                
-               <input type="text" class="form-control" ngModel name="producto" placeholder="Nombre del producto"
+               <input type="text" class="form-control" [ngModel]="initForm.producto" name="producto" placeholder="Nombre del producto"
                   required minlength="3">
 
                <span class="form-text text-danger" *ngIf="nombreValido()">Debe de ser de 3 letras</span>
@@ -22,7 +22,7 @@
          <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Precio: </label>
             <div class="col-sm-9 ">
-               <input type="number" class="form-control" ngModel name="precio" placeholder="Precio del producto"
+               <input type="number" class="form-control" [ngModel]="initForm.precio" name="precio" placeholder="Precio del producto"
                   required >
 
                   <span class="form-text text-danger" *ngIf="precioValido()">El precio debe de ser 0 o mayor</span>
@@ -33,7 +33,7 @@
          <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Existencia: </label>
             <div class="col-sm-9 ">
-               <input type="number" class="form-control" ngModel customMin [minimo]="0" name="existencia"
+               <input type="number" class="form-control" [ngModel]="initForm.existencia" customMin [minimo]="0" name="existencia"
                   placeholder="Existencias del producto"  required>
             </div>
          </div>
@@ -52,8 +52,16 @@
 
 <div class="row">
    <div class="col">
+
       <span>Valid</span>
       <pre>{{miFormulario.valid}}</pre>
+
+      <span>Pristine</span>
+      <pre>{{miFormulario.pristine}}</pre>
+
+      <span>Touched</span>
+      <pre>{{miFormulario.touched}}</pre>
+
       <span>Valor</span>
       <pre>{{miFormulario.value|json}}</pre>
       

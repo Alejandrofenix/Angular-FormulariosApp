@@ -5,11 +5,18 @@ import { NgForm } from '@angular/forms';
   selector: 'app-basicos',
   templateUrl: './basicos.component.html',
   styles: [
+
   ]
 })
 export class BasicosComponent implements OnInit {
 
   @ViewChild('miFormulario') miFormulario!:NgForm; //Para hacer referencía a una propiedad local en nuestro HTML
+
+  initForm={
+    producto:'',
+    precio:0,
+    existencia:0
+  }
 
   constructor() { }
 
@@ -26,6 +33,12 @@ export class BasicosComponent implements OnInit {
 
   guardar(){
   
+    console.log('Posteo correcto');
+    this.miFormulario.resetForm({
+      precio:0,
+      existencia:0
+    });
+    
     
   }
 
