@@ -48,7 +48,8 @@
     <label class="col-sm-3 col-form-label"></label>
     <div class="col-sm-9">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="terminosYCondiciones" name="terminos"
+          id="flexCheckDefault" required>
         <label class="form-check-label" for="flexCheckDefault">
           Términos y condiciones de uso
         </label>
@@ -67,6 +68,10 @@
 
 <h5>Valor del formulario</h5>
 <pre>{{miFormulario.value|json}}</pre>
+<br>
+
+<h5>Persona</h5>
+<pre>{{persona|json}}</pre>
 <br>
 
 <h5>Valid</h5>

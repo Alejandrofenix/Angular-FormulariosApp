@@ -11,6 +11,11 @@ export class SwitchesComponent {
   persona={
     genero:'',
     notificaciones:true
-  };
+  }
+
+
+  terminosYCondiciones: boolean=false;
+  
+
 
 }
