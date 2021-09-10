@@ -7,7 +7,8 @@
  <div class="mb-3 row">
   <label class="col-sm-3 col-form-label">Nombre</label>
   <div class="col-sm-9">
-   <input class="form-control" type="text" placeholder="Nombre de la persona" [ngModel]="persona.nombre" name="nombre" required>
+   <input class="form-control" type="text" placeholder="Nombre de la persona" 
+    [ngModel]="persona.nombre" name="nombre" required>
    <span class="form-text text-danger" *ngIf="nombreValido()">Este campo es obligatorio</span>
   </div>
  </div>
@@ -17,8 +18,16 @@
   <label class="col-sm-3 col-form-label">Agregar</label>
   <div class="col-sm-9">
    <div class="input-group">
-    <input class="form-control" type="text" placeholder="Agregar favorito" >
-    <button class="btn btn-outline-primary" type="button" >Agregar</button>
+
+    <input 
+     class="form-control" 
+     type="text" 
+     placeholder="Agregar favorito" 
+     [(ngModel)]="nuevoJuego" 
+     (keyup.enter)="agregarJuego()"
+     name="nuevoJuego">
+
+    <button class="btn btn-outline-primary" type="button" (click)="agregarJuego()">Agregar</button>
    </div>
   </div>
  </div>
@@ -28,11 +37,16 @@
  <div class="mb-3 row">
   <label class="col-sm-3 col-form-label">Favoritos</label>
   <div class="col-sm-9">
-   <input *ngFor="let juego of persona.favoritos; let i = index" 
-    class="form-control mb-1" 
-    [(ngModel)]="juego.nombre" 
-    name="favorito_{{i}}"
-    required>
+   <div class="input-group mb-1" *ngFor="let juego of persona.favoritos; let i = index" >
+
+    <input 
+     class="form-control" 
+     [(ngModel)]="juego.nombre" 
+     name="favorito_{{i}}"
+     required>
+     <button class="btn btn-outline-danger" type="button" (click)="eliminar(i)">Eliminar</button>
+
+   </div>
   </div>
  </div>
 

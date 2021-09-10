@@ -18,7 +18,12 @@ import { NgForm } from '@angular/forms';
   ]
 })
 export class DinamicosComponent   {
+  
   @ViewChild('miFormulario') miFormulario!:NgForm; //Para hacer referencía a una propiedad local en nuestro HTML
+
+  
+  nuevoJuego:string='';
+
 
   persona: Persona={
     nombre:'Alejandro',
@@ -34,9 +39,19 @@ export class DinamicosComponent   {
   nombreValido(){
     return this.miFormulario?.controls.nombre?.errors&&this.miFormulario?.controls.nombre?.touched;
   }
-
+  
+  agregarJuego(){
+    const nuevoFavorito:Favorito={
+      id:this.persona.favoritos.length+1,
+      nombre:this.nuevoJuego
+    }
+    this.persona.favoritos.push({...nuevoFavorito});
+    this.nuevoJuego='';
+  }
+  eliminar(index:number){
+    this.persona.favoritos.splice(index,1);
+  }
   guardar(){
     console.log('Formulario Posteado');
-    
   }
 }
