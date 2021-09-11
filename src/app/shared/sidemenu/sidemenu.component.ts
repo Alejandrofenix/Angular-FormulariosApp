@@ -35,7 +35,7 @@ export class SidemenuComponent {
   reactiveMenu:MenuItem[]=[
     {
       texto:'Básicos',
-      ruta:'./reactivos/basicos'
+      ruta:'./reactive/basicos'
     },
     {
       texto:'Dinamicos',
