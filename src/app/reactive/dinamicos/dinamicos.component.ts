@@ -52,6 +52,10 @@ export class DinamicosComponent implements OnInit {
 
   }
 
+  borrar(i:number){
+    this.favoritosArr.removeAt(i)
+  }
+
   guardar() {
     if (this.miFormulario.invalid) {
       this.miFormulario.markAllAsTouched();
