@@ -26,6 +26,19 @@ export class RegistroComponent implements OnInit {
   }
   );
 
+
+
+  get emailErrorMsg():string{
+    const errors = this.miFormulario.get('email')?.errors;
+    if(errors?.required){
+      return 'Email es obligatorio'
+    }else if(errors?.pattern){
+      return 'No es un formato de correo valido'
+    }else if (errors.emailTomado) {
+      return 'El email se encuentra registrado'
+    }
+    return '';
+  }
   constructor(private fb: FormBuilder, private validatorService: ValidatorService, private emailValidator:EmailValidatorService) { }
 
   ngOnInit(): void {
@@ -41,20 +54,6 @@ export class RegistroComponent implements OnInit {
   campoNoValido(campo: string) {
     return this.miFormulario.get(campo)?.invalid
       && this.miFormulario.get(campo)?.touched;
-  }
-
-  emailRequired(){
-    return this.miFormulario.get('email')?.errors?.required
-    && this.miFormulario.get('email')?.touched;
-  }
-
-  emailFormato(){
-    return this.miFormulario.get('email')?.errors?.pattern
-    && this.miFormulario.get('email')?.touched;
-  }
-  emailTomado(){
-    return this.miFormulario.get('email')?.errors?.emailTomado
-    && this.miFormulario.get('email')?.touched;
   }
 
   submitFormulario() {
