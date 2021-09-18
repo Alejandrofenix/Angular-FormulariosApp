@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ValidatorService } from 'src/app/shared/validator/validator.service';
 import { nombreApellidoPattern, emailPattern, usernameRepetido } from '../../../shared/validator/validaciones';
+import { EmailValidatorService } from '../../../shared/validator/email-validator.service';
 
 @Component({
   selector: 'app-registro',
@@ -13,8 +14,9 @@ export class RegistroComponent implements OnInit {
 
 
   miFormulario: FormGroup = this.fb.group({
+    //Primer argumento valor del campo, 2nd validación sincrona y 3ero validación asincrona   
     nombre: ['', [Validators.required, Validators.pattern(this.validatorService.nombreApellidoPattern)]],
-    email: ['', [Validators.required, Validators.pattern(this.validatorService.emailPattern)]],
+    email: ['', [Validators.required, Validators.pattern(this.validatorService.emailPattern)], [this.emailValidator]],
     username: ['', [Validators.required, this.validatorService.usernameRepetido]],
     password: ['', [Validators.required,Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required,]],
@@ -24,13 +26,13 @@ export class RegistroComponent implements OnInit {
   }
   );
 
-  constructor(private fb: FormBuilder, private validatorService: ValidatorService) { }
+  constructor(private fb: FormBuilder, private validatorService: ValidatorService, private emailValidator:EmailValidatorService) { }
 
   ngOnInit(): void {
     this.miFormulario.reset({
-      nombre: 'Alejandro PB',
-      email: 'usuario@live.com',
-      username: 'juanito_98'
+      nombre: 'Test number',
+      email: 'test1@test.com',
+      username: 'test1'
     })
   }
 
