@@ -12,32 +12,37 @@ import { nombreApellidoPattern, emailPattern, usernameRepetido } from '../../../
 export class RegistroComponent implements OnInit {
 
 
-  miFormulario: FormGroup= this.fb.group({
-    nombre:['',[Validators.required, Validators.pattern(this.validatorService.nombreApellidoPattern)]],
-    email:['',[Validators.required, Validators.pattern(this.validatorService.emailPattern)]],
-    username:['',[Validators.required,this.validatorService.usernameRepetido]],
+  miFormulario: FormGroup = this.fb.group({
+    nombre: ['', [Validators.required, Validators.pattern(this.validatorService.nombreApellidoPattern)]],
+    email: ['', [Validators.required, Validators.pattern(this.validatorService.emailPattern)]],
+    username: ['', [Validators.required, this.validatorService.usernameRepetido]],
+    password: ['', [Validators.required,Validators.minLength(6)]],
+    confirmPassword: ['', [Validators.required,]],
 
-  });
-    
-  constructor(private fb:FormBuilder, private validatorService:ValidatorService) { }
+  }, {
+   validators: this.validatorService.camposIguales('password','confirmPassword') 
+  }
+  );
+
+  constructor(private fb: FormBuilder, private validatorService: ValidatorService) { }
 
   ngOnInit(): void {
     this.miFormulario.reset({
-      nombre:'Alejandro',
-      email:'usuario@live.com',
-      username:'juanito_98'
+      nombre: 'Alejandro PB',
+      email: 'usuario@live.com',
+      username: 'juanito_98'
     })
   }
 
-  campoNoValido(campo:string){
+  campoNoValido(campo: string) {
     return this.miFormulario.get(campo)?.invalid
-    &&this.miFormulario.get(campo)?.touched;
+      && this.miFormulario.get(campo)?.touched;
   }
 
 
-  submitFormulario(){
+  submitFormulario() {
     console.log(this.miFormulario.value);
     this.miFormulario.markAllAsTouched();
-    
+
   }
 }
